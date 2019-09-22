@@ -32,19 +32,18 @@ export default function Main({ match, history }) {
         loadRepo()
     }, [search, reposOrigin])
     
-
     function goToSearch(e) {
         e.preventDefault()
         history.push(`/`)
     }
 
+   
     return (
         <div className='main-container'>
-            {   loading && <img src={loadingImg} alt='loading' /> 
-                || (
-                <> 
+            { loading && 
+                <img src={loadingImg} alt='loading' /> || 
+                <>
                     <img src={logo} alt='logo' />
-
                     <div className='detail-user'>
                         <h1>Voce pesquisou por: { match.params.id } </h1>
                         <div>
@@ -52,10 +51,8 @@ export default function Main({ match, history }) {
                             <input
                                 onChange={e => setSearch(e.target.value)}
                                 placeholder="Filtrar repositório"/>
-                            
                         </div>
                     </div>
-
                     <ul>
                         {repos && repos.map((repo) => (
                             <li key={ repo.id }>
@@ -74,10 +71,9 @@ export default function Main({ match, history }) {
                                 </div>
                             </li>
                         ))}
-                    </ul>
+                    </ul>            
                 </>
-            ) }
-            
+            }
         </div>
     )
 }

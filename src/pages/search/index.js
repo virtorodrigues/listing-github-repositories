@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 import logo from '../../assets/logo.svg'
 
-import './Styles.css'
+import './styles.css'
 
 export default function Search({ history }) {
     
@@ -20,8 +20,8 @@ export default function Search({ history }) {
                 <input
                     value={username}
                     onChange={e => setUsername(e.target.value)}
-                    placeholder="Digite seu nome do GIT"/>
-                <button type="submit">Enviar</button>
+                    placeholder="Digíte um repositório"/>
+                <button type="submit">Buscar</button>
             </form>
         </div>
     )

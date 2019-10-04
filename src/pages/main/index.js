@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import './Styles.css'
+import './styles.css'
 import logo from '../../assets/logo.svg'
-import like from '../../assets/like.svg'
-import dislike from '../../assets/dislike.svg'
 import { apiRepos } from '../../service/api'
 import loadingImg from '../../assets/spinner.gif'
+
+import ListRepository from '../../components/listRepository'
 
 export default function Main({ match, history }) {
     
@@ -43,6 +43,7 @@ export default function Main({ match, history }) {
             { loading && 
                 <img src={loadingImg} alt='loading' /> || 
                 <>
+               
                     <img src={logo} alt='logo' />
                     <div className='detail-user'>
                         <h1>Voce pesquisou por: { match.params.id } </h1>
@@ -53,25 +54,8 @@ export default function Main({ match, history }) {
                                 placeholder="Filtrar repositório"/>
                         </div>
                     </div>
-                    <ul>
-                        {repos && repos.map((repo) => (
-                            <li key={ repo.id }>
-                                <img src={ repo.owner.avatar_url } alt={repo.owner.avatar_url} />
-                                <footer>
-                                    <strong>{ repo.name }</strong>
-                                    <p><a href={repo.svn_url}>Acessar</a></p>
-                                </footer>
-                                <div className="buttons">
-                                    <button type="button">
-                                        <img src={like} alt="like" />
-                                    </button>
-                                    <button type="button">
-                                        <img src={dislike} alt="dislike" />
-                                    </button>
-                                </div>
-                            </li>
-                        ))}
-                    </ul>            
+                    <ListRepository repository={repos} />
+                    
                 </>
             }
         </div>
